@@ -19,12 +19,29 @@ public class stats : MonoBehaviour {
         if(gameObject.name=="timeTxt"){
             GetComponent<TextMesh>().text = "Time : " + GM.timeTotal;
         }
+
         if (gameObject.name=="status")
         {
             GetComponent<TextMesh>().text =GM.lvlCompleteStatus;
             
         }
 
+        if(gameObject.name=="lettersCollected"){
+                GetComponent<TextMesh>().text = GM.lettersCollected;
+        }
+
+        if(gameObject.name=="letters"){
+                GetComponent<TextMesh>().text = GM.currentWord;
+        }
+        /////////////////////////////////word comparision display /////////////////////////////
+        
+        /* if(gameObject.name=="Score"){
+                GetComponent<TextMesh>().text = GM.currentWord.Substring(0,GM.letterCount);
+         } */
+
+         if(gameObject.name=="Score"){
+                GetComponent<TextMesh>().text = "Score:" + GM.score+"/10";
+         }
         
 	}
 }

@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void Restart(){
+		
+		GM.GMReset();
 		SceneManager.LoadScene(int.Parse(PlayerPrefs.GetString("lastLoadedScene")));
 	}
 }

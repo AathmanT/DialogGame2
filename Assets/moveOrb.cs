@@ -99,14 +99,14 @@ public class moveOrb : MonoBehaviour
 	void Start () {
 		//dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
         dragDistance = 0.02f; //dragDistance is 15% height of the screen
-    
+        GM.lvlCompleteStatus="";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Rigidbody>().velocity = new Vector3(horizontalVelocity, GM.verticalVelocity, 4);
+		GetComponent<Rigidbody>().velocity = new Vector3(horizontalVelocity, GM.verticalVelocity, GM.forwardVelocity);
 
-
+        
 
  if (Input.touchCount == 1) // user is touching the screen with a single touch
         {
@@ -132,7 +132,7 @@ public class moveOrb : MonoBehaviour
                     {   //If the horizontal movement is greater than the vertical movement...
                         if ((lp.x > fp.x) && laneNumber<3 && controlLocked==false)  //If the movement was to the right)
                         {   //Right swipe
-							horizontalVelocity = 4;
+							horizontalVelocity = 2;
 							StartCoroutine(stopSlide());
 							laneNumber += 1;
 							controlLocked = true;
@@ -141,7 +141,7 @@ public class moveOrb : MonoBehaviour
                         else
                         {   //Left swipe
 							if( laneNumber>1 && controlLocked==false){
-									horizontalVelocity = -4;
+									horizontalVelocity = -2;
 									StartCoroutine(stopSlide());
 									laneNumber -= 1;
 									controlLocked = true;
@@ -194,6 +194,9 @@ public class moveOrb : MonoBehaviour
 
 	void OnTriggerEnter(Collider other) {
 
+        
+        
+
 		if (other.gameObject.name=="rampBottomTrig") {
 			GM.verticalVelocity = 2;
 		}
@@ -201,6 +204,16 @@ public class moveOrb : MonoBehaviour
 		{
 			GM.verticalVelocity = 0;
 		}
+
+         if(other.gameObject.name=="wordCheckTrigger"){
+
+            if( GM.wordCheck()!=true){
+                Destroy(gameObject);
+                Instantiate(boomObject,transform.position,boomObject.rotation);
+            }
+            
+           
+        }
 
         if (other.gameObject.name=="Quad") {
 
@@ -224,6 +237,7 @@ public class moveOrb : MonoBehaviour
 
 			Destroy(other.gameObject);
 		}
+        
 
         if(other.gameObject.tag=="coin"){
 
@@ -231,12 +245,114 @@ public class moveOrb : MonoBehaviour
             GM.coinTotal += 1;
         }
 
+       
+
+       if(other.gameObject.tag=="A"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "A";
+            Destroy(other.gameObject);
+
+            GM.check();
+            
+        }
+
+         if(other.gameObject.tag=="B"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "B";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+
+        if(other.gameObject.tag=="C"){
+            
+            GM.letterCount+=1;
+            GM.lettersCollected += "C";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="D"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "D";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="E"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "E";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="G"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "G";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="L"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "L";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="M"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "M";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="N"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "N";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="O"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "O";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
+
+        if(other.gameObject.tag=="P"){
+
+            GM.letterCount+=1;
+            GM.lettersCollected += "P";
+            Destroy(other.gameObject);
+
+            GM.check();
+        }
 
 	}
 
 	IEnumerator stopSlide()
 	{
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.4f);
 		horizontalVelocity = 0;
 		controlLocked = false;
 	}

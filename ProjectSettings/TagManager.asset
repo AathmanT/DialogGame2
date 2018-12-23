@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - lethal
+  - coin
+  - A
+  - B
+  - C
+  - P
+  - L
+  - E
+  - wordcheck
+  - N
+  - M
+  - G
+  - O
   layers:
   - Default
   - TransparentFX

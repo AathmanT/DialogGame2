@@ -12,7 +12,7 @@ public class moveCam : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        GetComponent<Rigidbody>().velocity = new Vector3(0, GM.verticalVelocity*GM.zVelocityAdjustment, 4*GM.zVelocityAdjustment);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, GM.verticalVelocity*GM.zVelocityAdjustment, GM.forwardVelocity*GM.zVelocityAdjustment);
 
     }
 }
